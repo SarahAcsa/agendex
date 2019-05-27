@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context displayName="agendex" path="/agendex" reloadable="true">
+
+   <Resource 
+      auth="Container" 
+      driverClassName="org.postgresql.Driver"
+      maxActive="10" 
+      maxIdle="3" 
+      name="jdbc/agendex" 
+      password="aluno"
+      type="javax.sql.DataSource" 
+      url="jdbc:postgresql://localhost:5436/agendex"
+      username="postgres" />
+
+</Context>

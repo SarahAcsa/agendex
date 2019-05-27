@@ -1,0 +1,27 @@
+.ui-widget {
+	font-size: 14px !important;
+}
+
+.invalido {
+    background-color: #FEBAB2 !important;
+    background-image: none !important;
+    color: #000000 !important;
+}
+
+.semfoto {
+    background-color: #FFD9B2 !important;
+    background-image: none !important;
+    color: #000000 !important;
+}
+
+.pronto {
+    background-color: #E1FEEA !important;
+    background-image: none !important;
+    color: #000000 !important;
+}
+
+.obrigatorio {
+	border-left-color: red !important;
+	border-left-width: 2px !important;
+}
+
