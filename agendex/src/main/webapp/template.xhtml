@@ -26,6 +26,7 @@
 			<p:menuitem value="Inicio" url="inicio.jsf" icon="ui-icon-home" />
 			<p:menuitem value="Dados da Clínica" actionListener="#{MenuControlador.gerenciarSessao}" action="instituicaoList?faces-redirect=true"  icon="ui-icon-search" ajax="false" />
 			<p:menuitem value="Usuários" actionListener="#{MenuControlador.gerenciarSessao}" action="usuarios?faces-redirect=true"  icon="ui-icon-search" ajax="false" />
+			<p:menuitem value="Pacientes" actionListener="#{MenuControlador.gerenciarSessao}" action="pacientes?faces-redirect=true"  icon="ui-icon-search" ajax="false" />
 			
 			<f:facet name="options">
 				<p:commandButton type="button" value="Sair" onclick="document.location.href='sair.jsp';" icon="ui-icon-extlink" />
