@@ -2,44 +2,43 @@ package br.com.agendex.persistencia;
 
 import java.util.List;
 
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
 import br.com.agendex.entidade.Medico;
+import br.com.ambientinformatica.jpa.exception.PersistenciaException;
 import br.com.ambientinformatica.jpa.persistencia.PersistenciaJpa;
+import br.com.ambientinformatica.util.UtilLog;
 
+@Repository("MedicoDao")
+public class MedicoDaoJpa extends PersistenciaJpa<Medico> implements MedicoDao{
 
-@Repository("medicoDao")
+    private static final long serialVersionUID = 1L;
 
-public class MedicoDaoJpa extends PersistenciaJpa<Medico> implements MedicoDao {
+    @Override
+    public List<Medico> listarPorNomeMedico(String nome) throws PersistenciaException {
+        try {
+            String sql = "select distinct i from Medico i where 1=1 ";
 
-	private static final long serialVersionUID = 1L;
+            if(nome != null && !nome.isEmpty()){
+                sql += " and upper(i.nome) like upper(:nome)";
+            }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Medico> listarPorNome(String nome) {
-		List<Medico> lista;
+            TypedQuery<Medico> query = em.createQuery(sql, Medico.class);
 
-		
-		Query consultaNome = getEntityManager().createQuery(String.format("SELECT p FROM Medico p WHERE p.nome LIKE '%%%s%%'", nome));
-		lista = consultaNome.getResultList();
-		return lista;
-	}
+            if(nome != null && !nome.isEmpty()){
+                query.setParameter("nome", "%" + nome + "%");
+            }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Medico> listarPorEspecialidade(String categoria1) {
-		List<Medico> lista2;
+            return query.getResultList();
 
-		
-		Query consultacat = getEntityManager().createQuery(String.format("SELECT p FROM Medico p WHERE p.especialidade LIKE 'cardiologista'", categoria1));
-		lista2 = consultacat.getResultList();
-		return lista2;
-	}
+        } catch (Exception e) {
+            UtilLog.getLog().error(e.getMessage(), e);
+            throw new PersistenciaException("Erro ao listar medicos", e);
+        }
+    }
 
-	
-	
-	
-	
 }
+
+

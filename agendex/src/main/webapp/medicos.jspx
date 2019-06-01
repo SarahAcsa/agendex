@@ -8,39 +8,38 @@
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="corpo">
 
-		<p:panel id="painelPacientes" header="Cadastro de Paciente">
+		<p:panel id="painelPacientes" header="Cadastro de Medico">
 
 			<a:field label="Nome">
 				<p:inputText styleClass="obrigatorio" id="nome"
-					value="#{PacienteControl.paciente.nome}" style="width:500px;" />
+					value="#{MedicoControl.medico.nome}" style="width:500px;" />
 			</a:field>
 
 			<a:newLine />
 
 			<a:field label="Nome social">
 				<p:inputText styleClass="obrigatorio" id="nomeSocial"
-					value="#{PacienteControl.paciente.nomeSocial}" style="width:500px;" />
+					value="#{MedicoControl.medico.nomeSocial}" style="width:500px;" />
 			</a:field>
 
 			<a:newLine />
 
 			<a:field label="E-mail">
 				<p:inputText styleClass="obrigatorio" id="email"
-					value="#{PacienteControl.paciente.email}" style="width:500px;" />
+					value="#{MedicoControl.medico.email}" style="width:500px;" />
 			</a:field>
 
 			<a:newLine />
 			<a:field label="CPF">
 				<p:inputMask mask="999.999.999-99" styleClass="obrigatorio" id="cpf"
-					value="#{PacienteControl.paciente.cpf}" style="width:180px;" />
+					value="#{MedicoControl.medico.cpf}" style="width:180px;" />
 
 			</a:field>
 
 
 			<a:field label="Data de Nascimento">
 				<p:inputMask mask="99/99/9999" styleClass="obrigatorio"
-					id="dataNascimento"
-					value="#{PacienteControl.paciente.dataNascimento}"
+					id="dataNascimento" value="#{MedicoControl.medico.dataNascimento}"
 					style="width:150px;" />
 			</a:field>
 
@@ -48,13 +47,12 @@
 
 			<a:field label="RG">
 				<p:inputMask mask="9999999" styleClass="obrigatorio" id="rg"
-					value="#{PacienteControl.paciente.rg}" style="width:150px;" />
+					value="#{MedicoControl.medico.rg}" style="width:150px;" />
 			</a:field>
 
-			<a:field label= "Orgão Expeditor" for="console2" />
+			<a:field label="Orgão Expeditor" for="console2" />
 			<p:selectOneMenu id="console2"
-				value="#{PacienteControl.paciente.orgaoExpeditor }"
-				style="width:100px">
+				value="#{MedicoControl.medico.orgaoExpeditor }" style="width:100px">
 
 				<f:selectItem itemLabel="SSP" itemValue="SSP" />
 				<f:selectItem itemLabel="Cartório Civil " itemValue="Cartório Civil" />
@@ -66,15 +64,15 @@
 
 			<a:field label="Telefone">
 				<p:inputMask mask="(99)99999-9999" styleClass="obrigatorio"
-					id="telefone" value="#{PacienteControl.paciente.telefone}"
+					id="telefone" value="#{MedicoControl.medico.telefone}"
 					style="width:180px;" />
 
 
 			</a:field>
 
 			<p:outputLabel for="console" value="Sexo" style="font-weight:bold" />
-			<p:selectOneMenu id="console"
-				value="#{PacienteControl.paciente.sexo }" style="width:180px">
+			<p:selectOneMenu id="console" value="#{MedicoControl.medico.sexo }"
+				style="width:180px">
 
 				<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 				<f:selectItem itemLabel="Femenino" itemValue="Femenino" />
@@ -83,12 +81,42 @@
 
 			<a:newLine />
 
-		
+			<a:field label="Endereço">
+				<p:inputText styleClass="obrigatorio" id="endereco"
+					value="#{MedicoControl.medico.endereco}" style="width:500px;" />
+			</a:field>
+
+			<a:newLine />
+
+			<a:field label="CRM">
+				<p:inputMask mask="9999-99" styleClass="obrigatorio" id="crm"
+					value="#{MedicoControl.medico.crm}" style="width:180px;" />
+
+
+			</a:field>
+
+			<p:outputLabel for="console" value="Especialidade"
+				style="font-weight:bold" />
+			<p:selectOneMenu id="console"
+				value="#{MedicoControl.medico.especialidade }" style="width:180px">
+
+				<f:selectItem itemLabel="Cardiologista" itemValue="Cardiologista" />
+				<f:selectItem itemLabel="Pediatra" itemValue="Pediatra" />
+				<f:selectItem itemLabel="Psiciologa" itemValue="Psiciologa" />
+				<f:selectItem itemLabel="Podologo" itemValue="Podologo" />
+				<f:selectItem itemLabel="Clinico Geral" itemValue="ClinicoGeral" />
+				<f:selectItem itemLabel="Ginicologista" itemValue="Ginicologista" />
+
+
+				<a:newLine />
+
+			</p:selectOneMenu>
+
 
 			<a:field spaceLeft="10px">
-				<p:commandButton actionListener="#{PacienteControl.confirmar}"
+				<p:commandButton actionListener="#{MedicoControl.confirmar}"
 					value="Salvar" ajax="false" icon="ui-icon-disk" />
-				
+
 
 			</a:field>
 			<a:newLine />

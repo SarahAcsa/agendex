@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="corpo">
+
+		<p:panel id="panelGeral" header="Pesquisar Pacientes Cadastrados">
+
+			<a:field label="Nome Paciente">
+				<p:inputText value="#{PacienteControl.nome}" style="width:400px;" />
+			</a:field>
+
+			<a:field spaceLeft="10px">
+				<p:commandButton
+					actionListener="#{PacienteControl.listarPorNomePaciente}"
+					value="Pesquisar" icon="ui-icon ui-icon-search"
+					update="tblPacientes" />
+			</a:field>
+
+			<a:field spaceLeft="10px">
+				<p:commandButton actionListener="#{MenuControlador.gerenciarSessao}"
+					ajax="false" action="pacientes?faces-redirect=true"
+					value="Cadastrar" icon="ui-icon-plus" />
+			</a:field>
+
+			<a:field spaceLeft="10px">
+				<p:commandButton value="Limpar"
+					actionListener="#{MenuControlador.gerenciarSessao}" ajax="false"
+					action="pacienteList?faces-redirect=true"
+					icon="ui-icon ui-icon-trash" />
+			</a:field>
+
+			<a:newLine />
+			<a:newLine />
+
+			<p:dataTable id="tblPacientes" value="#{PacienteControl.pacientes}"
+				var="paciente" emptyMessage="Sem registros" paginator="true"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rows="30" rowsPerPageTemplate="30,50,80,100,120,150">
+				<f:facet name="header">
+			Dados do Paciente
+			</f:facet>>
+				<p:column headerText="Nome" style="width:200px">
+					#{paciente.nome}
+				</p:column>
+				<p:column headerText="Nome Social">
+					#{paciente.nomeSocial}
+				</p:column>
+
+				<p:column headerText="CPF">
+					#{paciente.cpf}
+				</p:column>
+				<p:column headerText="RG">
+					#{paciente.rg}
+				</p:column>
+				<p:column headerText="Telefone">
+					#{paciente.telefone}
+				</p:column>
+
+				<p:column style="width:50px;" headerText="Editar">
+					<p:commandButton id="btnEditar" icon="ui-icon-pencil"
+						action="pacientes?faces-redirect=true">
+						<f:setPropertyActionListener value="#{paciente}"
+							target="#{PacienteControl.paciente}" />
+					</p:commandButton>
+				</p:column>
+
+				<p:column style="width:50px;" headerText="Excluir">
+					<p:commandButton id="btnConfirmarExclusao"
+						onclick="PF('confirmacaoExclusao').show()" icon="ui-icon-trash">
+						<f:setPropertyActionListener value="#{paciente}"
+							target="#{PacienteControl.pacienteExcluir}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+		</p:panel>
+
+		<p:confirmDialog message="Confirma a exclusão deste registro?"
+			header="Confirmação de exclusão" severity="alert"
+			widgetVar="confirmacaoExclusao">
+			<p:commandButton id="btnSim" value="Sim"
+				oncomplete="PF('confirmacaoExclusao').hide()"
+				actionListener="#{PacienteControl.excluir }"
+				update=":formCorpo:panelGeral" />
+			<p:commandButton id="btnNao" value="Não"
+				onclick="PF('confirmacaoExclusao').hide()" type="button" />
+		</p:confirmDialog>
+
+	</ui:define>
+</ui:composition>
