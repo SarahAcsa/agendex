@@ -88,8 +88,6 @@
 			<a:field spaceLeft="10px">
 				<p:commandButton actionListener="#{PacienteControl.confirmar}"
 					value="Salvar" ajax="false" icon="ui-icon-disk" />
-				
-
 			</a:field>
 			<a:newLine />
 			<a:newLine />
