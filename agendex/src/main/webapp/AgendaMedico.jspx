@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="corpo">
+
+		<p:panel id="panelGeral" header="Pesquisar horarios Cadastrados">
+
+			<a:field label="Data agendada">
+				<p:inputText value="#{AgendaMedicoControl.data}" style="width:400px;" />
+			</a:field>
+
+			<a:field spaceLeft="10px">
+				<p:commandButton
+					actionListener="#{AgendaMedicoControl.listaPorData}"
+					value="Pesquisar" icon="ui-icon ui-icon-search"
+					update="tblagenda" />
+			</a:field>
+			
+			<a:field spaceLeft="10px">
+				<p:commandButton actionListener="#{MenuControlador.gerenciarSessao}"
+					ajax="false" action="CadastroAgenda?faces-redirect=true"
+					value="Cadastrar" icon="ui-icon-plus" />
+			</a:field>
+
+			<a:field spaceLeft="10px">
+				<p:commandButton value="Limpar"
+					actionListener="#{MenuControlador.gerenciarSessao}" ajax="false"
+					action="AgendaMedico?faces-redirect=true"
+					icon="ui-icon ui-icon-trash" />
+			</a:field>
+
+			<a:newLine />
+			<a:newLine />
+
+			<p:dataTable id="tblagenda"
+				value="#{AgendaMedicoControl.agendaMedicos}" var="agendaMedico"
+				emptyMessage="Sem registros" paginator="true"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rows="30" rowsPerPageTemplate="30,50,80,100,120,150">
+				<f:facet name="header">
+			Datas do Cadastradas
+			</f:facet>>
+				<p:column headerText="Data Disponivel" style="width:200px">
+					#{agendaMedico.dataDisponivel}
+				</p:column>
+				<p:column headerText="Hora Disponivel">
+					#{agendaMedico.horaDisponivel}
+				</p:column>
+				
+			
+
+				<p:column style="width:50px;" headerText="Excluir">
+					<p:commandButton id="btnConfirmarExclusao"
+						onclick="PF('confirmacaoExclusao').show()" icon="ui-icon-trash">
+						<f:setPropertyActionListener value="#{agendaMedico}"
+							target="#{AgendaMedicoControl.agendaExcluir}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+		</p:panel>
+
+		<p:confirmDialog message="Confirma a exclusão deste registro?"
+			header="Confirmação de exclusão" severity="alert"
+			widgetVar="confirmacaoExclusao">
+			<p:commandButton id="btnSim" value="Sim"
+				oncomplete="PF('confirmacaoExclusao').hide()"
+				actionListener="#{AgendaMedicoControl.excluir }"
+				update=":formCorpo:panelGeral" />
+			<p:commandButton id="btnNao" value="Não"
+				onclick="PF('confirmacaoExclusao').hide()" type="button" />
+		</p:confirmDialog>
+
+	</ui:define>
+</ui:composition>
