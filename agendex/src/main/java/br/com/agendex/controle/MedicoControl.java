@@ -39,7 +39,7 @@ public class MedicoControl {
         }
     }
 
-    public void listarPorNomePaciente(){
+    public void listarPorNomeMedico(){
         try {
         	medicos = MedicoDao.listarPorNomeMedico(this.nome);
         } catch (Exception e) {
@@ -50,7 +50,7 @@ public class MedicoControl {
     public void excluir(){
         try {
         	MedicoDao.excluirPorId(medicoExcluir.getId());
-        	listarPorNomePaciente();
+        	listarPorNomeMedico();
             UtilFaces.addMensagemFaces("Excluído com sucesso!");
         } catch (Exception e) {
             UtilFaces.addMensagemFaces(e);

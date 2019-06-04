@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="corpo">
 
-		<p:panel id="painelPacientes" header="Cadastro de Medicos">
+		<p:panel id="painelMedicos" header="Cadastro de Medicos">
 
 			<a:field label="Nome">
 				<p:inputText styleClass="obrigatorio" id="nome"
@@ -100,7 +100,7 @@
 				style="width:150px">
 
 				<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
-				<f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+				<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 
 			</p:selectOneMenu>
 

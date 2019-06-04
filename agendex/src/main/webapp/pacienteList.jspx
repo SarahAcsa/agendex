@@ -31,7 +31,7 @@
 				<p:commandButton value="Limpar"
 					actionListener="#{MenuControlador.gerenciarSessao}" ajax="false"
 					action="pacienteList?faces-redirect=true"
-					icon="ui-icon ui-icon-trash" />
+					 />
 			</a:field>
 
 			<a:newLine />
