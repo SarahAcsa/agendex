@@ -30,12 +30,14 @@
 			</a:field>
 
 			<a:newLine />
+			
 			<a:field label="CPF">
 				<p:inputMask mask="999.999.999-99" styleClass="obrigatorio" id="cpf"
 					value="#{PacienteControl.paciente.cpf}" style="width:180px;" />
 
 			</a:field>
-
+			
+			<a:newLine />
 
 			<a:field label="Data de Nascimento">
 				<p:inputMask mask="99/99/9999" styleClass="obrigatorio"
@@ -50,8 +52,10 @@
 				<p:inputMask mask="9999999" styleClass="obrigatorio" id="rg"
 					value="#{PacienteControl.paciente.rg}" style="width:150px;" />
 			</a:field>
-
-			<a:field label= "Orgão Expeditor" for="console2" />
+			<a:newLine />
+			
+			<a:field label="Orgão Expeditor" for="console2" />
+			<a:newLine />
 			<p:selectOneMenu id="console2"
 				value="#{PacienteControl.paciente.orgaoExpeditor }"
 				style="width:100px">
@@ -71,8 +75,11 @@
 
 
 			</a:field>
+			
+			<a:newLine />
 
-			<p:outputLabel for="console" value="Sexo" style="font-weight:bold" />
+			<p:outputLabel for="console" value="Sexo" />
+			<a:newLine />
 			<p:selectOneMenu id="console"
 				value="#{PacienteControl.paciente.sexo }" style="width:180px">
 
@@ -83,14 +90,16 @@
 
 			<a:newLine />
 
-		
+
 
 			<a:field spaceLeft="10px">
 				<p:commandButton actionListener="#{PacienteControl.confirmar}"
 					value="Salvar" ajax="false" icon="ui-icon-disk" />
 			</a:field>
+			
 			<a:newLine />
-			<a:newLine />
+			
+			
 
 
 		</p:panel>
