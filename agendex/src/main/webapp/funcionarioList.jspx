@@ -8,57 +8,70 @@
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="corpo">
 
-		<p:panel id="panelGeral" header="Pesquisar horarios Cadastrados">
+		<p:panel id="panelGeral" header="Pesquisar Funcionarios Cadastrados">
 
-			<a:field label="Data agendada">
-				<p:inputText value="#{AgendaMedicoControl.data}" style="width:400px;" />
+			<a:field label="Nome Funcionario">
+				<p:inputText value="#{FuncionarioControl.nome}" style="width:400px;" />
 			</a:field>
 
 			<a:field spaceLeft="10px">
 				<p:commandButton
-					actionListener="#{AgendaMedicoControl.listaPorData}"
+					actionListener="#{FuncionarioControl.listarPorNomeFuncionario}"
 					value="Pesquisar" icon="ui-icon ui-icon-search"
-					update="tblagenda" />
+					update="tblFuncionarios" />
 			</a:field>
-			
+
 			<a:field spaceLeft="10px">
 				<p:commandButton actionListener="#{MenuControlador.gerenciarSessao}"
-					ajax="false" action="CadastroAgenda?faces-redirect=true"
+					ajax="false" action="funcionarios?faces-redirect=true"
 					value="Cadastrar" icon="ui-icon-plus" />
 			</a:field>
 
 			<a:field spaceLeft="10px">
 				<p:commandButton value="Limpar"
 					actionListener="#{MenuControlador.gerenciarSessao}" ajax="false"
-					action="AgendaMedico?faces-redirect=true"
-					icon="ui-icon ui-icon-trash" />
+					action="funcionarioList?faces-redirect=true" />
 			</a:field>
 
 			<a:newLine />
 			<a:newLine />
 
-			<p:dataTable id="tblagenda"
-				value="#{AgendaMedicoControl.agendaMedicos}" var="agendaMedico"
+			<p:dataTable id="tblFuncionarios"
+				value="#{FuncionarioControl.funcionarios}" var="funcionario"
 				emptyMessage="Sem registros" paginator="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rows="30" rowsPerPageTemplate="30,50,80,100,120,150">
 				<f:facet name="header">
-			Datas do Cadastradas
+			Dados do Funcionario
 			</f:facet>>
-				<p:column headerText="Data Disponivel" style="width:200px">
-					#{agendaMedico.dataDisponivel}
+				<p:column headerText="Nome" style="width:200px">
+					#{funcionario.nome}
 				</p:column>
-				<p:column headerText="Hora Disponivel">
-					#{agendaMedico.horaDisponivel}
+
+				<p:column headerText="Endereço">
+					#{funcionario.endereco}
 				</p:column>
-				
-			
+				<p:column headerText="CPF">
+					#{funcionario.cpf}
+				</p:column>
+
+				<p:column headerText="Telefone">
+					#{funcionario.telefone}
+				</p:column>
+
+				<p:column style="width:50px;" headerText="Editar">
+					<p:commandButton id="btnEditar" icon="ui-icon-pencil"
+						action="funcionarios?faces-redirect=true">
+						<f:setPropertyActionListener value="#{funcionario}"
+							target="#{FuncionarioControl.funcionario}" />
+					</p:commandButton>
+				</p:column>
 
 				<p:column style="width:50px;" headerText="Excluir">
 					<p:commandButton id="btnConfirmarExclusao"
 						onclick="PF('confirmacaoExclusao').show()" icon="ui-icon-trash">
-						<f:setPropertyActionListener value="#{agendaMedico}"
-							target="#{AgendaMedicoControl.agendaExcluir}" />
+						<f:setPropertyActionListener value="#{funcionario}"
+							target="#{FuncionarioControl.funcionarioExcluir}" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
@@ -70,7 +83,7 @@
 			widgetVar="confirmacaoExclusao">
 			<p:commandButton id="btnSim" value="Sim"
 				oncomplete="PF('confirmacaoExclusao').hide()"
-				actionListener="#{AgendaMedicoControl.excluir }"
+				actionListener="#{FuncionarioControl.excluir }"
 				update=":formCorpo:panelGeral" />
 			<p:commandButton id="btnNao" value="Não"
 				onclick="PF('confirmacaoExclusao').hide()" type="button" />
