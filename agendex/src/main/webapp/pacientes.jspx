@@ -22,21 +22,30 @@
 					value="#{PacienteControl.paciente.nomeSocial}" style="width:500px;" />
 			</a:field>
 
+
 			<a:newLine />
 
 			<a:field label="E-mail">
 				<p:inputText styleClass="obrigatorio" id="email"
-					value="#{PacienteControl.paciente.email}" style="width:500px;" />
+					value="#{UsuarioControl.usuario.login}" style="width:500px;" />
 			</a:field>
 
+
 			<a:newLine />
-			
+
+			<a:field label="Senha">
+				<p:inputText styleClass="obrigatorio" id="senha"
+					value="#{UsuarioControl.usuario.senha}" style="width:500px;" />
+
+			</a:field>
+			<a:newLine />
+
 			<a:field label="CPF">
 				<p:inputMask mask="999.999.999-99" styleClass="obrigatorio" id="cpf"
 					value="#{PacienteControl.paciente.cpf}" style="width:180px;" />
 
 			</a:field>
-			
+
 			<a:newLine />
 
 			<a:field label="Data de Nascimento">
@@ -53,7 +62,7 @@
 					value="#{PacienteControl.paciente.rg}" style="width:150px;" />
 			</a:field>
 			<a:newLine />
-			
+
 			<a:field label="Orgão Expeditor" for="console2" />
 			<a:newLine />
 			<p:selectOneMenu id="console2"
@@ -75,7 +84,7 @@
 
 
 			</a:field>
-			
+
 			<a:newLine />
 
 			<p:outputLabel for="console" value="Sexo" />
@@ -96,12 +105,8 @@
 				<p:commandButton actionListener="#{PacienteControl.confirmar}"
 					value="Salvar" ajax="false" icon="ui-icon-disk" />
 			</a:field>
-			
+
 			<a:newLine />
-			
-			
-
-
 		</p:panel>
 
 

@@ -23,7 +23,7 @@
 
 			<a:field spaceLeft="10px">
 				<p:commandButton actionListener="#{MenuControlador.gerenciarSessao}"
-					ajax="false" action="instituicao?faces-redirect=true"
+					ajax="false" action="instituicao?faces-redirect=true" id = "cadClinica"
 					value="Cadastrar" icon="ui-icon-plus" />
 			</a:field>
 

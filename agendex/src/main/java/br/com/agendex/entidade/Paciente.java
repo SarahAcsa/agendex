@@ -50,10 +50,10 @@ public class Paciente extends Entidade implements Serializable {
 	@Length(min = 0, max = 15, message = "O limite do campo telefone do paciente é de 15 caracteres.", groups = AmbientValidator.class)
 	private String telefone;
 
-	@NotEmpty(message = "Informe o e-mail.", groups = AmbientValidator.class)
-	@Column(length = 255, nullable = false, unique = true)
-	@Length(min = 0, max = 255, message = "O limite do campo e-mail do paciente é de 255 caracteres.", groups = AmbientValidator.class)
-	private String email;
+//	@NotEmpty(message = "Informe o e-mail.", groups = AmbientValidator.class)
+//	@Column(length = 255, nullable = false, unique = true)
+//	@Length(min = 0, max = 255, message = "O limite do campo e-mail do paciente é de 255 caracteres.", groups = AmbientValidator.class)
+//	private String email;
 
 	@NotEmpty(message = "Informe o Orgão Expeditor.", groups = AmbientValidator.class)
 	@Column(length = 50, nullable = false)
@@ -116,13 +116,13 @@ public class Paciente extends Entidade implements Serializable {
 		this.telefone = telefone;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
 
 	public String getOrgaoExpeditor() {
 		return orgaoExpeditor;

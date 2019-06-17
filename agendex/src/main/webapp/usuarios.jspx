@@ -10,10 +10,6 @@
 					style="width:200px;" />
 			</a:field>
 
-			<a:field label="Nome do Usuário" spaceLeft="10px;">
-				<p:inputText styleClass="obrigatorio" value="#{UsuarioControl.usuario.nome}"
-					style="width:200px;" />
-			</a:field>
 
 			<a:field label="Senha" spaceLeft="10px;">
 				<p:password styleClass="obrigatorio" id="senha" value="#{UsuarioControl.usuario.senha}" style="width:100px" />
