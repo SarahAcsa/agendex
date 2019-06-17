@@ -10,35 +10,93 @@
 	<title>Agendex</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta charset="utf-8" />
-	<meta name="description" content="Sistema de agendamendo de consulta médica" />
+	<meta name="description"
+		content="Sistema de agendamendo de consulta médica" />
 	<meta name="author" content="Wendel Guedes" />
 	<link rel="shortcut icon" href="images/favicon.ico" />
 
 	<!-- CSS -->
-	<h:outputStylesheet library="css" name="estilo.css"/>
+	<h:outputStylesheet library="css" name="estilo.css" />
+
 </h:head>
 
 <h:body>
 
 	<h:form id="formCorpo">
-		<p:growl autoUpdate="true"/>
+		<p:growl autoUpdate="true" />
 		<p:menubar>
 			<p:menuitem value="Inicio" url="inicio.jsf" icon="ui-icon-home" />
-			<p:menuitem value="Dados da Clínica" actionListener="#{MenuControlador.gerenciarSessao}" action="instituicaoList?faces-redirect=true"  icon="ui-icon-search" ajax="false" />
-			<p:menuitem value="Usuários" actionListener="#{MenuControlador.gerenciarSessao}" action="usuarios?faces-redirect=true"  icon="ui-icon-search" ajax="false" />
-			<p:menuitem value="Pacientes" actionListener="#{MenuControlador.gerenciarSessao}" action="pacienteList?faces-redirect=true"  icon="ui-icon-search" ajax="false" />
-			<p:menuitem value="Medicos" actionListener="#{MenuControlador.gerenciarSessao}" action="medicoList?faces-redirect=true"  icon="ui-icon-search" ajax="false" />
-			<p:menuitem value="Agenda Medico" actionListener="#{MenuControlador.gerenciarSessao}" action="agendaMedicoList?faces-redirect=true"  icon="ui-icon-search" ajax="false" />
-			<p:menuitem value="Funcionários" actionListener="#{MenuControlador.gerenciarSessao}" action="funcionarioList?faces-redirect=true"  icon="ui-icon-search" ajax="false" />
-			
-			
+			<p:menuitem value="Dados da Clínica"
+				actionListener="#{MenuControlador.gerenciarSessao}"
+				action="instituicaoList?faces-redirect=true" icon="ui-icon-search"
+				ajax="false" />
+			<p:menuitem value="Usuários"
+				actionListener="#{MenuControlador.gerenciarSessao}"
+				action="usuarios?faces-redirect=true" icon="ui-icon-search"
+				ajax="false" />
+			<p:menuitem value="Pacientes"
+				actionListener="#{MenuControlador.gerenciarSessao}"
+				action="pacienteList?faces-redirect=true" icon="ui-icon-search"
+				ajax="false" />
+			<p:menuitem value="Medicos"
+				actionListener="#{MenuControlador.gerenciarSessao}"
+				action="medicoList?faces-redirect=true" icon="ui-icon-search"
+				ajax="false" />
+			<p:menuitem value="Agenda Medico"
+				actionListener="#{MenuControlador.gerenciarSessao}"
+				action="agendaMedicoList?faces-redirect=true" icon="ui-icon-search"
+				ajax="false" />
+			<p:menuitem value="Funcionários"
+				actionListener="#{MenuControlador.gerenciarSessao}"
+				action="funcionarioList?faces-redirect=true" icon="ui-icon-search"
+				ajax="false" />
+
+
 			<f:facet name="options">
-				<p:commandButton type="button" value="Sair" onclick="document.location.href='sair.jsp';" icon="ui-icon-extlink" />
-			</f:facet>			
+				<p:commandButton type="button" value="Sair"
+					onclick="document.location.href='sair.jsp';" icon="ui-icon-extlink" />
+			</f:facet>
 		</p:menubar>
-		<p:messages autoUpdate="true"/>
+		<p:messages autoUpdate="true" />
 		<ui:insert name="corpo" />
 	</h:form>
 
 </h:body>
+<script>
+	function pesquisarCep(parametro) {
+
+		let req = new XMLHttpRequest();
+		
+		if(parametro == "") {
+			alert("Informe o CEP.");
+		}
+		
+		busca = parametro.replace("-", "");
+
+		req.open("GET", "https://viacep.com.br/ws/" + busca + "/json/");
+		req.send(null);
+		
+		let campo = document.getElementById("formCorpo:endereco");
+
+		req.onreadystatechange = function() {
+			if (req.readyState == 4) {
+				let retorno = JSON.parse(req.responseText);
+				let endereco = retorno.logradouro;
+				endereco += " " + retorno.bairro;
+				endereco += ", " + retorno.localidade;
+				endereco += "-" + retorno.uf;
+				campo.value = endereco;
+			} 
+		}
+	}
+
+	document.querySelector(".btnPesquisarCep").addEventListener("click",
+			function() {
+
+				let cep = document.getElementById("formCorpo:cep").value;
+
+				let retorno = pesquisarCep(cep);
+
+			});
+</script>
 </html>
