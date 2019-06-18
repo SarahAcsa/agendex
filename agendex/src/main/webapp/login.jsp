@@ -2,7 +2,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Agendex</title>
+	<title>Belle Vittá</title>
 
     <link href="resources/css/bootstrap.css" rel="stylesheet" />
     <link href="resources/css/styles.css" rel="stylesheet" />
@@ -24,7 +24,7 @@
     	<div class="container">
         	<div class="row branding">
             	<div class="span6">
-                	<h1 class="pull-left"><a href="index.html"><strong>Agendex</strong></a></h1>
+                	<h1 class="pull-left"><a href="index.html"><strong>Clínica Belle Vittá</strong></a></h1>
                 </div>            	
             </div>
             <div class="row navigation">
@@ -34,7 +34,7 @@
 	<div class="container content">
         <div class="row">
             <div class="span8 leftContent">
-            	<h2>Garrafy System </h2>
+            	<h2>Clínica Belle Vittá </h2>
                 <div class="row">
                 	<div class="span4">
                     </div>

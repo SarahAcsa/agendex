@@ -34,9 +34,8 @@
 
 			<a:newLine />
 
-			<a:field label="Inscrição Estadual" >
-				<p:inputMask styleClass="obrigatorio"
-					id="inscricaoEstadual"
+			<a:field label="Inscrição Estadual">
+				<p:inputMask styleClass="obrigatorio" id="inscricaoEstadual"
 					value="#{InstituicaoControl.instituicao.inscricaoEstadual}"
 					style="width:180px;">
 				</p:inputMask>
@@ -45,8 +44,7 @@
 			<a:newLine />
 
 			<a:field label="Inscrição Municipal">
-				<p:inputMask styleClass="obrigatorio"
-					id="inscricaoMunicipal"
+				<p:inputMask styleClass="obrigatorio" id="inscricaoMunicipal"
 					value="#{InstituicaoControl.instituicao.inscricaoMunicipal}"
 					style="width:180px;">
 				</p:inputMask>
@@ -55,11 +53,18 @@
 			<a:newLine />
 
 			<a:field label="Telefone">
-				<p:inputMask mask="99.9999-9999" styleClass="obrigatorio"
-					id="fone"
-					value="#{InstituicaoControl.instituicao.fone}"
-					style="width:180px;">
+				<p:inputMask mask="99.9999-9999" styleClass="obrigatorio" id="fone"
+					value="#{InstituicaoControl.instituicao.fone}" style="width:180px;">
 				</p:inputMask>
+			</a:field>
+
+			<a:newLine />
+
+			<a:field label="CEP">
+				<p:inputMask mask="99999-999" id="cep" style="width:180px;">
+				</p:inputMask>
+				<p:commandButton value="Pesquisar" id="btnPesquisarCep" class="btnPesquisarCep" icon="ui-icon ui-icon-search" />
+
 			</a:field>
 
 			<a:newLine />

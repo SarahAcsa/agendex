@@ -40,9 +40,7 @@ public class Usuario extends Entidade implements Serializable{
 
     @NotNull
     @NotEmpty
-    private String senha;
-
-  
+    private String senha;  
 
     @Temporal(TemporalType.DATE)
     private Date dataAlteracaoSenha = new Date();
@@ -141,7 +139,4 @@ public class Usuario extends Entidade implements Serializable{
     public Object getId() {
         return login;
     }
-
-	
-
 }

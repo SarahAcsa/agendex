@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:composition template="templateNaoCadastrado.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="corpo">
+
+		<p:panel id="painelPacientes" header="Cadastro de Paciente">
+
+			<a:field label="Nome">
+				<p:inputText styleClass="obrigatorio" id="nome"
+					value="#{PacienteControl.paciente.nome}" style="width:500px;" />
+			</a:field>
+
+			<a:newLine />
+
+			<a:field label="Nome social">
+				<p:inputText styleClass="obrigatorio" id="nomeSocial"
+					value="#{PacienteControl.paciente.nomeSocial}" style="width:500px;" />
+			</a:field>
+
+
+			<a:newLine />
+
+			<a:field label="E-mail">
+				<p:inputText styleClass="obrigatorio" id="email"
+					value="#{UsuarioControl.usuario.login}" style="width:500px;" />
+			</a:field>
+
+
+			<a:newLine />
+
+			<a:field label="Senha">
+				<p:inputText styleClass="obrigatorio" id="senha"
+					value="#{UsuarioControl.usuario.senha}" style="width:500px;" />
+
+			</a:field>
+			<a:newLine />
+
+			<a:field label="CPF">
+				<p:inputMask mask="999.999.999-99" styleClass="obrigatorio" id="cpf"
+					value="#{PacienteControl.paciente.cpf}" style="width:180px;" />
+
+			</a:field>
+
+			<a:newLine />
+
+			<a:field label="Data de Nascimento">
+				<p:inputMask mask="99/99/9999" styleClass="obrigatorio"
+					id="dataNascimento"
+					value="#{PacienteControl.paciente.dataNascimento}"
+					style="width:150px;" />
+			</a:field>
+
+			<a:newLine />
+
+			<a:field label="RG">
+				<p:inputMask mask="9999999" styleClass="obrigatorio" id="rg"
+					value="#{PacienteControl.paciente.rg}" style="width:150px;" />
+			</a:field>
+			<a:newLine />
+
+			<a:field label="Orgão Expeditor" for="console2" />
+			<a:newLine />
+			<p:selectOneMenu id="console2"
+				value="#{PacienteControl.paciente.orgaoExpeditor }"
+				style="width:100px">
+
+				<f:selectItem itemLabel="SSP" itemValue="SSP" />
+				<f:selectItem itemLabel="Cartório Civil " itemValue="Cartório Civil" />
+
+			</p:selectOneMenu>
+
+
+			<a:newLine />
+
+			<a:field label="Telefone">
+				<p:inputMask mask="(99)99999-9999" styleClass="obrigatorio"
+					id="telefone" value="#{PacienteControl.paciente.telefone}"
+					style="width:180px;" />
+
+
+			</a:field>
+
+			<a:newLine />
+
+			<p:outputLabel for="console" value="Sexo" />
+			<a:newLine />
+			<p:selectOneMenu id="console"
+				value="#{PacienteControl.paciente.sexo }" style="width:180px">
+
+				<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+				<f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+
+			</p:selectOneMenu>
+
+			<a:newLine />
+
+
+
+			<a:field spaceLeft="10px">
+				<p:commandButton actionListener="#{PacienteControl.confirmar}"
+					value="Salvar" ajax="false" icon="ui-icon-disk" />
+			</a:field>
+
+			<a:newLine />
+		</p:panel>
+
+
+
+	</ui:define>
+</ui:composition>
