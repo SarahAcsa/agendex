@@ -62,7 +62,8 @@
 			<a:newLine />
 			<a:field label="Data de Nascimento">
 				<p:inputMask mask="99/99/9999" styleClass="obrigatorio"
-					id="dataNascimento" value="#{FuncionarioControl.funcionario.dataNascimento}"
+					id="dataNascimento"
+					value="#{FuncionarioControl.funcionario.dataNascimento}"
 					style="width:150px;" />
 			</a:field>
 
@@ -71,7 +72,8 @@
 			<a:field label="Orgão Expeditor" for="console2" />
 			<a:newLine />
 			<p:selectOneMenu id="console2"
-				value="#{FuncionarioControl.funcionario.orgaoExpeditor }" style="width:150px">
+				value="#{FuncionarioControl.funcionario.orgaoExpeditor }"
+				style="width:150px">
 
 				<f:selectItem itemLabel="SSP" itemValue="SSP" />
 				<f:selectItem itemLabel="Cartório Civil " itemValue="Cartório Civil" />
@@ -82,8 +84,8 @@
 
 			<p:outputLabel for="console" value="Sexo" style="width:100px" />
 			<a:newLine />
-			<p:selectOneMenu id="console" value="#{FuncionarioControl.funcionario.sexo }"
-				style="width:150px">
+			<p:selectOneMenu id="console"
+				value="#{FuncionarioControl.funcionario.sexo }" style="width:150px">
 
 				<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 				<f:selectItem itemLabel="Feminino" itemValue="Feminino" />

@@ -19,7 +19,8 @@ import br.com.ambientinformatica.util.Entidade;
 public class Medico extends Entidade implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	//private ScheduleModel caixas;
 	@Id
 	@GeneratedValue(generator = "medico_seq", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "medico_seq", sequenceName = "medico_seq", allocationSize = 1, initialValue = 1)
@@ -185,5 +186,9 @@ public class Medico extends Entidade implements Serializable {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-
+	
+	@Override
+	public String toString() {
+		return this.nome;
+	}
 }

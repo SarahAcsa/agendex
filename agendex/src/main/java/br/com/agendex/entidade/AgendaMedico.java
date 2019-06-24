@@ -1,18 +1,17 @@
 package br.com.agendex.entidade;
 
 import java.io.Serializable;
-
-import javax.persistence.Column;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
-
-import br.com.ambientinformatica.util.AmbientValidator;
 import br.com.ambientinformatica.util.Entidade;
 
 @Entity
@@ -26,36 +25,37 @@ public class AgendaMedico extends Entidade implements Serializable {
 	private Integer id;
 
 
-	@NotEmpty(message = "Informe a Data disponivel para atendimento..", groups = AmbientValidator.class)
-	@Column(length = 255, nullable = false, unique = true)
-	@Length(min = 0, max = 255, message = "O limite do campo data Disponivel  é de 255 caracteres.", groups = AmbientValidator.class)
-	private String dataDisponivel;
-
-	@NotEmpty(message = "Informe a Hora disponivel para atendimento.", groups = AmbientValidator.class)
-	@Column(length = 255, nullable = false, unique = true)
-	@Length(min = 0, max = 255, message = "O limite do campo hora Disponivel  é de 255 caracteres.", groups = AmbientValidator.class)
-	private String horaDisponivel;
+	@Temporal(TemporalType.DATE)
+	private Date dataDisponivel;
+		
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Medico medico;
+	
+	
+	
 	
 	@Override
 	public Integer getId() {
 		return id;
 	}
 
-	public String getDataDisponivel() {
+	public Date getDataDisponivel() {
 		return dataDisponivel;
 	}
 
-	public void setDataDisponivel(String dataDisponivel) {
+	public void setDataDisponivel(Date dataDisponivel) {
 		this.dataDisponivel = dataDisponivel;
 	}
 
-	public String getHoraDisponivel() {
-		return horaDisponivel;
+	public Medico getMedico() {
+		return medico;
 	}
 
-	public void setHoraDisponivel(String horaDisponivel) {
-		this.horaDisponivel = horaDisponivel;
+	public void setMedico(Medico medico) {
+		this.medico = medico;
 	}
+
 
 
 }

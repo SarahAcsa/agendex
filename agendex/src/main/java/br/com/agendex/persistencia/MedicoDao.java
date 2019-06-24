@@ -9,5 +9,5 @@ import br.com.ambientinformatica.jpa.persistencia.Persistencia;
 public interface MedicoDao extends Persistencia<Medico>{
 
     List<Medico> listarPorNomeMedico(String nome) throws PersistenciaException;
-
+    List<Medico> listarPorEspecialidade(String nome) throws PersistenciaException;
 }

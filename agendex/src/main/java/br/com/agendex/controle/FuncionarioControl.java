@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.faces.event.ActionEvent;
 
+import org.primefaces.model.DefaultScheduleModel;
+import org.primefaces.model.ScheduleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -22,10 +24,17 @@ public class FuncionarioControl {
     private Funcionario funcionarioExcluir;
 
     private String nome;
+    
 
     private List<Funcionario> funcionarios = new ArrayList<>();
 
-    @Autowired
+    
+    public FuncionarioControl() {
+		
+	}
+    
+
+	@Autowired
     private FuncionarioDao FuncionarioDao;
 
     public void confirmar(ActionEvent evt){

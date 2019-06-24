@@ -39,6 +39,31 @@ public class MedicoDaoJpa extends PersistenciaJpa<Medico> implements MedicoDao{
         }
     }
 
+	@Override
+	public List<Medico> listarPorEspecialidade(String especialidade) throws PersistenciaException {
+		try {
+            String sql = "select distinct i from Medico i where 1=1 ";
+
+            if(especialidade != null && !especialidade.isEmpty()){
+                sql += " and upper(i.especialidade) like upper(:especialidade)";
+            }
+
+            TypedQuery<Medico> query = em.createQuery(sql, Medico.class);
+
+            if(especialidade != null && !especialidade.isEmpty()){
+                query.setParameter("especialidade", "%" + especialidade + "%");
+            }
+
+            return query.getResultList();
+
+        } catch (Exception e) {
+            UtilLog.getLog().error(e.getMessage(), e);
+            throw new PersistenciaException("Erro ao listar especialidade", e);
+        }
+	}
+    
+
+    
 }
 
 

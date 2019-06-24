@@ -71,6 +71,9 @@ public class Paciente extends Entidade implements Serializable {
 	private String dataNascimento;
 
 
+	Usuario usuario;
+	
+	
 	@Override
 	public Integer getId() {
 		return id;

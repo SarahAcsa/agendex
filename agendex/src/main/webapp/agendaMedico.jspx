@@ -17,7 +17,7 @@
 					showOn="button" />
 			</a:field>
 
-			<a:field label="Data">
+			<a:field label="Hora">
 				<p:calendar id="time"
 					value="#{AgendaMedicoControl.agendaMedico.horaDisponivel}"
 					pattern="HH:mm" timeOnly="true" />

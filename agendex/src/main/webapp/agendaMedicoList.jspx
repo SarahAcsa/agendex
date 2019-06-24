@@ -24,7 +24,7 @@
 
 			<a:field spaceLeft="10px">
 				<p:commandButton actionListener="#{MenuControlador.gerenciarSessao}"
-					ajax="false" action="agendaMedico?faces-redirect=true"
+					ajax="false" action="Agenda?faces-redirect=true"
 					value="Cadastrar" icon="ui-icon-plus" />
 			</a:field>
 

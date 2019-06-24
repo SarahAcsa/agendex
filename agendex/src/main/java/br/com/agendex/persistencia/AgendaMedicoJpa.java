@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import br.com.agendex.entidade.AgendaMedico;
+import br.com.agendex.entidade.Medico;
 import br.com.ambientinformatica.jpa.exception.PersistenciaException;
 import br.com.ambientinformatica.jpa.persistencia.PersistenciaJpa;
 import br.com.ambientinformatica.util.UtilLog;
@@ -38,5 +39,8 @@ public class AgendaMedicoJpa extends PersistenciaJpa<AgendaMedico> implements Ag
 			throw new PersistenciaException("Erro ao listar medicos", e);
 		}
 	}
+	
+	
+
 
 }
