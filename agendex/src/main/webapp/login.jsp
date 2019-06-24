@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:p="http://primefaces.org/ui">
 <head>
-	<title>Agendex</title>
+	<title>Belle Vittá</title>
 
     <link href="resources/css/bootstrap.css" rel="stylesheet" />
     <link href="resources/css/styles.css" rel="stylesheet" />
@@ -25,7 +25,7 @@ xmlns:p="http://primefaces.org/ui">
     	<div class="container">
         	<div class="row branding">
             	<div class="span6">
-                	<h1 class="pull-left"><a href="index.html"><strong>Agendex</strong></a></h1>
+                	<h1 class="pull-left"><a href="index.html"><strong>Clínica Belle Vittá</strong></a></h1>
                 </div>            	
             </div>
             <div class="row navigation">
@@ -35,7 +35,7 @@ xmlns:p="http://primefaces.org/ui">
 	<div class="container content">
         <div class="row">
             <div class="span8 leftContent">
-            	<h2>Garrafy System </h2>
+            	<h2>Clínica Belle Vittá </h2>
                 <div class="row">
                 	<div class="span4">
                     </div>
@@ -63,8 +63,8 @@ xmlns:p="http://primefaces.org/ui">
                   <label>Login</label>
                   <input type="text" id="usuario" name="j_username" class="span3"  />
                   <label>Senha</label>
-                  <input name="j_password" type="password" class="span3" />                  
-                  <input class="btn btn-large btn-success btnSignup" type="submit" value="Entrar" />
+                  <input name="j_password" id="senha" type="password" class="span3" />                  
+                  <input class="btn btn-large btn-success btnSignup" id = "entrar" type="submit" value="Entrar" />
                 </div>
             </div>
             

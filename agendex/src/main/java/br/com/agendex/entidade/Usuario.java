@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.ambientinformatica.jpa.util.AlfaNumerico;
@@ -32,15 +33,14 @@ public class Usuario extends Entidade implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(nullable=false, unique = true)
-    @NotNull(message="Login do usuário é obrigatório", groups=AmbientValidator.class)
-    @NotEmpty(message="Login do usuário é obrigatório", groups=AmbientValidator.class)
-    @AlfaNumerico(message = "O login do usuário não pode conter caracteres especiais, acentos ou espaços", semAcentos = true, semEspacos = true, groups=AmbientValidator.class)
+	@NotEmpty(message="Login do usuário é obrigatório", groups = AmbientValidator.class)
+	@Column(length = 255, nullable = false, unique = true)
+    @Length(min = 0, max = 255, message = "O limite do campo e-mail do paciente é de 255 caracteres.", groups = AmbientValidator.class)
     private String login;
 
-    private String senha;
-
-    private String nome;
+    @NotNull
+    @NotEmpty
+    private String senha;  
 
     @Temporal(TemporalType.DATE)
     private Date dataAlteracaoSenha = new Date();
@@ -91,8 +91,9 @@ public class Usuario extends Entidade implements Serializable{
     }
 
     public void setLogin(String login) {
-        this.login = login;
-    }
+		 this.login = login;
+		
+	}
 
     public String getSenha() {
         return senha;
@@ -106,13 +107,6 @@ public class Usuario extends Entidade implements Serializable{
         this.papeis = papeis;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public Date getDataAlteracaoSenha() {
         return dataAlteracaoSenha;
@@ -145,5 +139,4 @@ public class Usuario extends Entidade implements Serializable{
     public Object getId() {
         return login;
     }
-
 }

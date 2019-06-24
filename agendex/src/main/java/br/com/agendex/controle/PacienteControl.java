@@ -1,6 +1,7 @@
 package br.com.agendex.controle;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.event.ActionEvent;
@@ -9,9 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import br.com.agendex.entidade.Instituicao;
 import br.com.agendex.entidade.Paciente;
-import br.com.agendex.persistencia.InstituicaoDao;
+import br.com.agendex.entidade.Usuario;
 import br.com.agendex.persistencia.PacienteDao;
 import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
 
@@ -24,6 +24,8 @@ public class PacienteControl {
     private Paciente pacienteExcluir;
 
     private String nome;
+    
+    private Usuario usuario = new Usuario();
 
     private List<Paciente> pacientes = new ArrayList<>();
 
@@ -36,6 +38,7 @@ public class PacienteControl {
             PacienteDao.alterar(paciente);
             UtilFaces.addMensagemFaces("Paciente Cadastrado com sucesso!");
             paciente = new Paciente();
+            
         } catch (Exception e) {
             UtilFaces.addMensagemFaces(e);
         }

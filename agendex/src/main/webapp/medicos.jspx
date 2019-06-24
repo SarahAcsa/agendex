@@ -51,13 +51,6 @@
 
 			<a:newLine />
 
-			<a:field label="Endereco">
-				<p:inputText styleClass="obrigatorio" id="endereco"
-					value="#{MedicoControl.medico.endereco}" style="width:500px;" />
-			</a:field>
-
-			<a:newLine />
-
 			<a:field label="Especialidade">
 				<p:inputText styleClass="obrigatorio" id="especialidade"
 					value="#{MedicoControl.medico.especialidade}" style="width:300px;" />
@@ -103,13 +96,36 @@
 				<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 
 			</p:selectOneMenu>
+			
+			<a:newLine />
+
+			<a:field label="CEP">
+				<p:inputMask mask="99999-999" id="cep" style="width:180px;">
+				</p:inputMask>
+				<p:commandButton value="Pesquisar" id="btnPesquisarCep"
+					class="btnPesquisarCep" icon="ui-icon ui-icon-search" />
+
+			</a:field>
 
 			<a:newLine />
-			<a:field spaceLeft="20px">
-				<p:commandButton actionListener="#{MedicoControl.confirmar}"
-					value="Salvar" ajax="false" icon="ui-icon-disk" />
+
+			<a:field label="Endereço">
+				<p:inputText styleClass="obrigatorio" id="endereco"
+					value="#{MedicoControl.medico.endereco}" style="width:500px;" />
 			</a:field>
+
 			<a:newLine />
+
+			<a:field>
+				<p:commandButton id="btnSalvar"
+					actionListener="#{MedicoControl.confirmar }" icon="ui-icon-disk"
+					value="Salvar" update=":formCorpo:painelMedicos" />
+			</a:field>
+
+			<a:field spaceLeft="10px">
+				<p:commandButton immediate="true" action="medicoList" value="Fechar"
+					ajax="false" icon="ui-icon ui-icon-close" />
+			</a:field>
 
 		</p:panel>
 

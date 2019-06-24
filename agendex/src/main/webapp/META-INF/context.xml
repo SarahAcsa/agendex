@@ -9,7 +9,11 @@
       name="jdbc/agendex" 
       password="123456"
       type="javax.sql.DataSource" 
+<<<<<<< HEAD
       url="jdbc:postgresql://localhost:5432/agendex"
+=======
+      url="jdbc:postgresql://localhost/agendex"
+>>>>>>> branch 'master' of https://github.com/SarahAcsa/agendex.git
       username="postgres" />
 
 </Context>

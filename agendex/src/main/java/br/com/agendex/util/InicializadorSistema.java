@@ -28,7 +28,6 @@ public class InicializadorSistema {
 			List<Usuario> usuarios = usuarioDao.listar();
 			if(usuarios.isEmpty()){
 				Usuario usu = new Usuario();
-				usu.setNome("admin");
 				usu.setLogin("admin");
 				usu.setSenhaNaoCriptografada("123456");
 				usu.addPapel(EnumPapelUsuario.ADMIN);
